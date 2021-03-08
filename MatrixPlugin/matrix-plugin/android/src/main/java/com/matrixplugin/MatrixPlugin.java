@@ -13,14 +13,11 @@ import com.example.nativecpp.Matrixlib;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 @NativePlugin
 public class MatrixPlugin extends Plugin {
-    static {
-        System.loadLibrary("Matrix-lib");
-    }
 
-    public native int[] Multiply(int[] a, int[] b);
 
     @PluginMethod
     public void echo(PluginCall call) {
@@ -39,9 +36,13 @@ public class MatrixPlugin extends Plugin {
 //        JSArray aa = new JSArray();
 //        aa.put(1);
 //        System.out.println(call.getArray("a", aa));
-//        Matrixlib obj = new Matrixlib();
+        Matrixlib obj = new Matrixlib();
 //        System.out.println(Arrays.toString(cast(a)));
+        StringTokenizer st = new StringTokenizer(obj.Multiply(cast(a), cast(b)));
         int[] res = new int[9];
+        for (int i = 0; i < 9; i++)
+            res[i] = Integer.parseInt(st.nextToken());
+
         JSObject ret = new JSObject();
 //        JSArray a1 = new JSArray();
 

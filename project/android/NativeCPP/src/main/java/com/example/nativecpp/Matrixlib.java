@@ -6,5 +6,5 @@ public class Matrixlib {
         System.loadLibrary("Matrix-lib");
     }
 
-    public native int[] Multiply(int[] a, int[] b);
+    public native String Multiply(int[] a, int[] b);
 }
